@@ -1,0 +1,17 @@
+package com.app.backend.business.services;
+
+
+import java.util.List;
+import java.util.Optional;
+
+import com.app.backend.dao.entities.RendezVous;
+
+public interface RendezVousService {
+    RendezVous createRendezVous(RendezVous rendezVous);
+    List<RendezVous> getAllRendezVous();
+    Optional<RendezVous> getRendezVousById(Long id);
+    Optional<RendezVous> updateRendezVous(Long id, RendezVous rendezVous);
+    boolean deleteRendezVous(Long id);
+    void deleteAllRendezVous();
+}
+
