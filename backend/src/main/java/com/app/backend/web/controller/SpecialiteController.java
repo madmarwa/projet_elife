@@ -37,7 +37,7 @@ public class SpecialiteController {
         return new ResponseEntity<>(savedSpecialite, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Specialite> updateSpecialite(@PathVariable Long id, @RequestBody Specialite specialite) {
         Optional<Specialite> existingSpecialite = specialiteService.findById(id);
         if (existingSpecialite.isPresent()) {
@@ -49,7 +49,7 @@ public class SpecialiteController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSpecialite(@PathVariable Long id) {
         specialiteService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

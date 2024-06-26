@@ -1,4 +1,4 @@
-package com.app.backend.dao.entities;
+package com.app.backend.dao.enums;
 
 public enum ERole {
     ROLE_USER,
@@ -7,3 +7,5 @@ public enum ERole {
     ROLE_PATIENT
 
 }
+
+

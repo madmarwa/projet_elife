@@ -1,6 +1,9 @@
 package com.app.backend.dao.entities;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.app.backend.dao.enums.ERole;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;

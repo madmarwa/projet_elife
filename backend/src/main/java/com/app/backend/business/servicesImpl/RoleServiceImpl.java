@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.backend.business.services.RoleService;
-import com.app.backend.dao.entities.ERole;
 import com.app.backend.dao.entities.Role;
+import com.app.backend.dao.enums.ERole;
 import com.app.backend.dao.repositories.RoleRepository;
 
 @Service

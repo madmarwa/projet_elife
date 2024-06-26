@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.backend.business.services.RoleService;
-import com.app.backend.dao.entities.ERole;
 import com.app.backend.dao.entities.Role;
+import com.app.backend.dao.enums.ERole;
 
 @RestController
 @RequestMapping("/api/role")

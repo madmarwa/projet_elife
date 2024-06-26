@@ -24,19 +24,19 @@ import com.app.backend.dao.repositories.DoctorRepository;
 import com.app.backend.dao.repositories.HoraireRepository;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/horaire")
 public class HoraireController {
     @Autowired
     private HoraireRepository horaireRepository;
     @Autowired
     private DoctorRepository doctorRepository;
 
-    @GetMapping("/horaire/list")
+    @GetMapping()
     public List<Horaire> getAllHoraire() {
         return horaireRepository.findAll();
 
     }
-    @GetMapping("/horaire/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Horaire> getHoraireById(@PathVariable("id") Long id) {
         Optional<Horaire> horaireData = horaireRepository.findById(id);
 
@@ -47,14 +47,14 @@ public class HoraireController {
         }
 
     }
-    @GetMapping("/horaire/list/{id}")
+    @GetMapping("/doctor/{id}")
     public List<Horaire> getAllHoraireByDoctor(@PathVariable("id") Long id) {
         Doctor medecin=doctorRepository.findById(id).get();
         return horaireRepository.findAllByMedecin(medecin);
 
     }
 
-    @PostMapping("/horaire")
+    @PostMapping("")
     public ResponseEntity<Horaire> createHoraire(@RequestBody Horaire horaire) {
         Horaire savedHoraire = horaireRepository.save(horaire);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -63,7 +63,7 @@ public class HoraireController {
 
     }
 
-    @PutMapping("/horaire/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Horaire> updateHoraire(@PathVariable("id") Long id, @RequestBody Horaire horaire) {
 
         Optional<Horaire> horaireOptional = horaireRepository.findById(id);
@@ -76,7 +76,7 @@ public class HoraireController {
 
 
 
-    @DeleteMapping("/horaire/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteHoraire(@PathVariable("id") Long id) {
         try {
             horaireRepository.deleteById(id);
@@ -87,7 +87,7 @@ public class HoraireController {
 
     }
 
-    @DeleteMapping("/horaire/deleteall")
+    @DeleteMapping("")
     public ResponseEntity<HttpStatus> deleteAllHoraire() {
         try {
             horaireRepository.deleteAll();
