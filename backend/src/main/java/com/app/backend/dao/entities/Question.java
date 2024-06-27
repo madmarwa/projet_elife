@@ -30,7 +30,7 @@ public class Question {
     private boolean urgent;
     private String texte;
     @DBRef
-    private Patient patient;
+    private User patient;
 
 
 

@@ -29,7 +29,7 @@ public class Reponse {
     private boolean visible;
     private String texte;
     @DBRef
-    private Doctor medecin;
+    private User medecin;
     @DBRef
     private Question question;
 

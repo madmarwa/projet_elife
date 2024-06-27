@@ -18,10 +18,10 @@ import java.util.List;
 import java.util.Optional;
 
 
-import com.app.backend.dao.entities.Doctor;
 import com.app.backend.dao.entities.Horaire;
-import com.app.backend.dao.repositories.DoctorRepository;
+import com.app.backend.dao.entities.User;
 import com.app.backend.dao.repositories.HoraireRepository;
+import com.app.backend.dao.repositories.UserRepository;
 
 @RestController
 @RequestMapping("/api/horaire")
@@ -29,7 +29,7 @@ public class HoraireController {
     @Autowired
     private HoraireRepository horaireRepository;
     @Autowired
-    private DoctorRepository doctorRepository;
+    private UserRepository userRepository;
 
     @GetMapping()
     public List<Horaire> getAllHoraire() {
@@ -49,7 +49,7 @@ public class HoraireController {
     }
     @GetMapping("/doctor/{id}")
     public List<Horaire> getAllHoraireByDoctor(@PathVariable("id") Long id) {
-        Doctor medecin=doctorRepository.findById(id).get();
+        User medecin=userRepository.findById(id).get();
         return horaireRepository.findAllByMedecin(medecin);
 
     }

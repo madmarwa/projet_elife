@@ -8,8 +8,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.app.backend.dao.enums.*;
- 
+import static com.app.backend.dao.enums.Privilege.* ;
  
 @RequiredArgsConstructor
 public enum Role {
@@ -19,8 +18,12 @@ public enum Role {
   USER(
       Set.of(READ_PRIVILEGE)
  ),
- DOCTOR(),
- PATIENT();
+ DOCTOR(
+   Set.of()
+ ),
+ PATIENT(
+   Set.of()
+ );
  
   @Getter
   private final Set<Privilege> privileges;

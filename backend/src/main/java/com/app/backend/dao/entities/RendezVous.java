@@ -35,8 +35,8 @@ public class RendezVous {
     private boolean valide;
     private boolean vu;
     @DBRef
-    private Patient patient;
+    private User patient;
     @DBRef
-    private Doctor medecin;
+    private User medecin;
 
 }

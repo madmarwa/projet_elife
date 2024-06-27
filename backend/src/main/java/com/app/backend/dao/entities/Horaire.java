@@ -30,6 +30,6 @@ public class Horaire {
     private Time debutApMidi;
     private Time finApMidi;
     @DBRef
-    private Doctor medecin;
+    private User medecin;
 
 }
