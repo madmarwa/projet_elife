@@ -22,7 +22,7 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
-    public Optional<Photo> getPhotoById(Long id) {
+    public Optional<Photo> getPhotoById(String id) {
         return photoRepository.findById(id);
     }
 
@@ -32,7 +32,7 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
-    public Optional<Photo> updatePhoto(Long id, Photo photo) {
+    public Optional<Photo> updatePhoto(String id, Photo photo) {
         return photoRepository.findById(id).map(existingPhoto -> {
             existingPhoto.setFile(photo.getFile());
             existingPhoto.setShareDate(photo.getShareDate());
@@ -41,7 +41,7 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
-    public boolean deletePhoto(Long id) {
+    public boolean deletePhoto(String id) {
         return photoRepository.findById(id).map(photo -> {
             photoRepository.delete(photo);
             return true;

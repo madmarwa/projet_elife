@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.app.backend.dao.entities.Photo;
 
 @RepositoryRestResource
-public interface PhotoRepository extends MongoRepository<Photo, Long> {
+public interface PhotoRepository extends MongoRepository<Photo, String> {
 
 }

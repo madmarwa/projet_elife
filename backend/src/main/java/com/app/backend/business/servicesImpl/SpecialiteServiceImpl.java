@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.backend.business.services.SpecialiteService;
-import com.app.backend.dao.entities.Specialite;
+import com.app.backend.dao.entities.Speciality;
 import com.app.backend.dao.repositories.SpecialiteRepository;
 
 import java.util.List;
@@ -17,22 +17,22 @@ public class SpecialiteServiceImpl implements SpecialiteService {
     private SpecialiteRepository specialiteRepository;
 
     @Override
-    public List<Specialite> findAll() {
+    public List<Speciality> findAll() {
         return specialiteRepository.findAll();
     }
 
     @Override
-    public Optional<Specialite> findById(Long id) {
+    public Optional<Speciality> findById(String id) {
         return specialiteRepository.findById(id);
     }
 
     @Override
-    public Specialite save(Specialite specialite) {
+    public Speciality save(Speciality specialite) {
         return specialiteRepository.save(specialite);
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
         specialiteRepository.deleteById(id);
     }
 }

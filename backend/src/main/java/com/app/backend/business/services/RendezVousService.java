@@ -9,9 +9,9 @@ import com.app.backend.dao.entities.RendezVous;
 public interface RendezVousService {
     RendezVous createRendezVous(RendezVous rendezVous);
     List<RendezVous> getAllRendezVous();
-    Optional<RendezVous> getRendezVousById(Long id);
-    Optional<RendezVous> updateRendezVous(Long id, RendezVous rendezVous);
-    boolean deleteRendezVous(Long id);
+    Optional<RendezVous> getRendezVousById(String id);
+    Optional<RendezVous> updateRendezVous(String id, RendezVous rendezVous);
+    boolean deleteRendezVous(String id);
     void deleteAllRendezVous();
 }
 

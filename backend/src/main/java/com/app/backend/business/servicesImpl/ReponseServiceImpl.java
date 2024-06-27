@@ -27,12 +27,12 @@ public class ReponseServiceImpl implements ReponseService {
     }
 
     @Override
-    public Optional<Reponse> getReponseById(Long id) {
+    public Optional<Reponse> getReponseById(String id) {
         return reponseRepository.findById(id);
     }
 
     @Override
-    public Optional<Reponse> updateReponse(Long id, Reponse reponse) {
+    public Optional<Reponse> updateReponse(String id, Reponse reponse) {
         return reponseRepository.findById(id).map(existingReponse -> {
             existingReponse.setDateReponse(reponse.getDateReponse());
             existingReponse.setVisible(reponse.isVisible());
@@ -44,7 +44,7 @@ public class ReponseServiceImpl implements ReponseService {
     }
 
     @Override
-    public boolean deleteReponse(Long id) {
+    public boolean deleteReponse(String id) {
         return reponseRepository.findById(id).map(reponse -> {
             reponseRepository.delete(reponse);
             return true;

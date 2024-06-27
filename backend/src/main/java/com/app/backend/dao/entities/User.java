@@ -1,84 +1,86 @@
 package com.app.backend.dao.entities;
-
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.app.backend.dao.enums.Role;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Collection;
-
-import jakarta.persistence.*;
 
 @Builder
 @Document(collection = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User  implements UserDetails {
+public class User implements UserDetails {
 
     @Id
-    private Long id;
+    private String id;
 
-    private String name;
-    private String lastName;
+    private String firstname;
+    private String lastname;
     private String sexe;
-    private Date birthDate;
-    private Date dateInscri;
+    private LocalDate birthDate;
+    
+    @CreatedDate
+    private LocalDate createdDate;
+
     private String email;
     private String phone;
-    private String profilPhoto;
     private String password;
     private String address;
+    private boolean active;
     
-    
-    @Enumerated(EnumType.STRING)
-        @Column(nullable = false)
+    @DBRef
+    private Speciality speciality;
 
+    @Enumerated(EnumType.STRING)
     private Role role;
 
 
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return role.getAuthorities();
-     }
-     
-      @Override
-      public String getPassword() {
+    }
+
+    @Override
+    public String getPassword() {
         return password;
-     }
-     
-      @Override
-      public String getUsername() {
+    }
+
+    @Override
+    public String getUsername() {
         return email;
-     }
-     
-      @Override
-      public boolean isAccountNonExpired() {
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
         return true;
-     }
-     
-      @Override
-      public boolean isAccountNonLocked() {
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
         return true;
-     }
-     
-      @Override
-      public boolean isCredentialsNonExpired() {
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
         return true;
-     }
-     
-      @Override
-      public boolean isEnabled() {
-        return true;
-     }
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return active;
+    }
 }

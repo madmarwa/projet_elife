@@ -22,7 +22,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Optional<Question> getQuestionById(Long id) {
+    public Optional<Question> getQuestionById(String id) {
         return questionRepository.findById(id);
     }
 
@@ -32,7 +32,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Optional<Question> updateQuestion(Long id, Question question) {
+    public Optional<Question> updateQuestion(String id, Question question) {
         return questionRepository.findById(id).map(existingQuestion -> {
             existingQuestion.setDate(question.getDate());
             existingQuestion.setUrgent(question.isUrgent());
@@ -43,7 +43,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public boolean deleteQuestion(Long id) {
+    public boolean deleteQuestion(String id) {
         return questionRepository.findById(id).map(question -> {
             questionRepository.delete(question);
             return true;

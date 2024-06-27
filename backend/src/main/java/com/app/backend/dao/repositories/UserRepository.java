@@ -10,7 +10,7 @@ import com.app.backend.dao.entities.User;
 
 
 @RepositoryRestResource
-public interface UserRepository extends MongoRepository<User, Long>  {
+public interface UserRepository extends MongoRepository<User,String>  {
     Optional<User>  findByEmail(String email);
     List<User>  findByRole(String role);
 

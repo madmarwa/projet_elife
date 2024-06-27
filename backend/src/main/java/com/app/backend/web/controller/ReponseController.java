@@ -33,7 +33,7 @@ public class ReponseController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Reponse> getReponseById(@PathVariable("id") Long id) {
+    public ResponseEntity<Reponse> getReponseById(@PathVariable("id") String id) {
         try {
             Optional<Reponse> reponseData = reponseService.getReponseById(id);
             if (reponseData.isPresent()) {
@@ -58,7 +58,7 @@ public class ReponseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Reponse> updateReponse(@PathVariable("id") Long id, @RequestBody Reponse reponse) {
+    public ResponseEntity<Reponse> updateReponse(@PathVariable("id") String id, @RequestBody Reponse reponse) {
         try {
             Optional<Reponse> updatedReponse = reponseService.updateReponse(id, reponse);
             if (updatedReponse.isPresent()) {
@@ -72,7 +72,7 @@ public class ReponseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteReponse(@PathVariable("id") Long id) {
+    public ResponseEntity<HttpStatus> deleteReponse(@PathVariable("id") String id) {
         try {
             boolean deleted = reponseService.deleteReponse(id);
             if (deleted) {

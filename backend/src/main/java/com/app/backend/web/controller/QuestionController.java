@@ -40,7 +40,7 @@ public class QuestionController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Question> getQuestionById(@PathVariable("id") Long id) {
+    public ResponseEntity<Question> getQuestionById(@PathVariable("id") String id) {
         try {
             Optional<Question> questionData = questionService.getQuestionById(id);
             if (questionData.isPresent()) {
@@ -68,7 +68,7 @@ public class QuestionController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Question> updateQuestion(@PathVariable("id") Long id, @RequestBody Question question) {
+    public ResponseEntity<Question> updateQuestion(@PathVariable("id") String id, @RequestBody Question question) {
         try {
             Optional<Question> updatedQuestion = questionService.updateQuestion(id, question);
             if (updatedQuestion.isPresent()) {
@@ -83,7 +83,7 @@ public class QuestionController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteQuestion(@PathVariable("id") Long id) {
+    public ResponseEntity<HttpStatus> deleteQuestion(@PathVariable("id") String id) {
         try {
             boolean deleted = questionService.deleteQuestion(id);
             if (deleted) {

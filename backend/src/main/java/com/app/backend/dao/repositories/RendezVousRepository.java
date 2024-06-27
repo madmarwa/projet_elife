@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.app.backend.dao.entities.RendezVous;
 
 @RepositoryRestResource
-public interface RendezVousRepository  extends MongoRepository<RendezVous, Long> {
+public interface RendezVousRepository  extends MongoRepository<RendezVous, String> {
 
 }

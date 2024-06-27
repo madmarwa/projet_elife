@@ -23,7 +23,7 @@ public class RendezVousServiceImpl implements RendezVousService {
     }
 
     @Override
-    public Optional<RendezVous> getRendezVousById(Long id) {
+    public Optional<RendezVous> getRendezVousById(String id) {
         return rendezVousRepository.findById(id);
     }
 
@@ -33,7 +33,7 @@ public class RendezVousServiceImpl implements RendezVousService {
     }
 
     @Override
-    public Optional<RendezVous> updateRendezVous(Long id, RendezVous rendezVous) {
+    public Optional<RendezVous> updateRendezVous(String id, RendezVous rendezVous) {
         return rendezVousRepository.findById(id).map(existingRendezVous -> {
             existingRendezVous.setDateDemande(rendezVous.getDateDemande());
             existingRendezVous.setDate(rendezVous.getDate());
@@ -47,7 +47,7 @@ public class RendezVousServiceImpl implements RendezVousService {
     }
 
     @Override
-    public boolean deleteRendezVous(Long id) {
+    public boolean deleteRendezVous(String id) {
         return rendezVousRepository.findById(id).map(rendezVous -> {
             rendezVousRepository.delete(rendezVous);
             return true;

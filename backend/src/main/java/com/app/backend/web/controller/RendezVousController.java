@@ -40,7 +40,7 @@ public class RendezVousController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RendezVous> getRendezVousById(@PathVariable("id") Long id) {
+    public ResponseEntity<RendezVous> getRendezVousById(@PathVariable("id") String id) {
         try {
             Optional<RendezVous> rendezVousData = rendezVousService.getRendezVousById(id);
             if (rendezVousData.isPresent()) {
@@ -68,7 +68,7 @@ public class RendezVousController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RendezVous> updateRendezVous(@PathVariable("id") Long id, @RequestBody RendezVous rendezVous) {
+    public ResponseEntity<RendezVous> updateRendezVous(@PathVariable("id") String id, @RequestBody RendezVous rendezVous) {
         try {
             Optional<RendezVous> updatedRendezVous = rendezVousService.updateRendezVous(id, rendezVous);
             if (updatedRendezVous.isPresent()) {
@@ -83,7 +83,7 @@ public class RendezVousController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteRendezVous(@PathVariable("id") Long id) {
+    public ResponseEntity<HttpStatus> deleteRendezVous(@PathVariable("id") String id) {
         try {
             boolean deleted = rendezVousService.deleteRendezVous(id);
             if (deleted) {

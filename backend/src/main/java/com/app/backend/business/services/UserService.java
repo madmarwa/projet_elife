@@ -7,8 +7,8 @@ import com.app.backend.dao.entities.User;
 
 public interface UserService {
     List<User> findAll();
-    Optional<User> findById(Long id);
+    Optional<User> findById(String id);
     List<User> findByRole(String role);
     User save(User user);
-    void deleteById(Long id);
+    void deleteById(String id);
 }

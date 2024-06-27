@@ -3,9 +3,10 @@ package com.app.backend.dao.entities;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
-import com.mongodb.internal.connection.Time;
+import java.sql.Time;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +22,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ToString
 @Getter
 @Setter
+@Builder
 public class Horaire {
     @Id
-    private Long id;
+    private String id;
     private String jour;
     private Time debutMatin;
     private Time finMatin;

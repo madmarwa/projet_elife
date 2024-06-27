@@ -7,7 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import com.app.backend.dao.entities.User;
 
 public record AuthenticationUserDTO(
-        Long id,
+        String id,
         String email,
         List<String> roles) {
     public static AuthenticationUserDTO toAuthenticationUserDTO(User user) {

@@ -3,9 +3,9 @@ package com.app.backend.dao.repositories;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.app.backend.dao.entities.Specialite;
+import com.app.backend.dao.entities.Speciality;
 
 @RepositoryRestResource
-public interface SpecialiteRepository  extends MongoRepository<Specialite, Long> {
+public interface SpecialiteRepository  extends MongoRepository<Speciality, String> {
 
 }

@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import com.app.backend.dao.entities.Question;
 
 @RepositoryRestResource
-public interface QuestionRepository extends MongoRepository<Question, Long> {
+public interface QuestionRepository extends MongoRepository<Question, String> {
 
 }

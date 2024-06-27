@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.app.backend.business.services.SpecialiteService;
-import com.app.backend.dao.entities.Specialite;
+import com.app.backend.dao.entities.Speciality;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,30 +19,30 @@ public class SpecialiteController {
     private SpecialiteService specialiteService;
 
     @GetMapping
-    public ResponseEntity<List<Specialite>> getAllSpecialites() {
-        List<Specialite> specialites = specialiteService.findAll();
+    public ResponseEntity<List<Speciality>> getAllSpecialites() {
+        List<Speciality> specialites = specialiteService.findAll();
         return new ResponseEntity<>(specialites, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Specialite> getSpecialiteById(@PathVariable Long id) {
-        Optional<Specialite> specialite = specialiteService.findById(id);
+    public ResponseEntity<Speciality> getSpecialiteById(@PathVariable String id) {
+        Optional<Speciality> specialite = specialiteService.findById(id);
         return specialite.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                          .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
-    public ResponseEntity<Specialite> createSpecialite(@RequestBody Specialite specialite) {
-        Specialite savedSpecialite = specialiteService.save(specialite);
+    public ResponseEntity<Speciality> createSpecialite(@RequestBody Speciality specialite) {
+        Speciality savedSpecialite = specialiteService.save(specialite);
         return new ResponseEntity<>(savedSpecialite, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Specialite> updateSpecialite(@PathVariable Long id, @RequestBody Specialite specialite) {
-        Optional<Specialite> existingSpecialite = specialiteService.findById(id);
+    public ResponseEntity<Speciality> updateSpecialite(@PathVariable String id, @RequestBody Speciality specialite) {
+        Optional<Speciality> existingSpecialite = specialiteService.findById(id);
         if (existingSpecialite.isPresent()) {
             specialite.setId(id);
-            Specialite updatedSpecialite = specialiteService.save(specialite);
+            Speciality updatedSpecialite = specialiteService.save(specialite);
             return new ResponseEntity<>(updatedSpecialite, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -50,7 +50,7 @@ public class SpecialiteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSpecialite(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteSpecialite(@PathVariable String id) {
         specialiteService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

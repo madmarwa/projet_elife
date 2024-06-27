@@ -38,7 +38,7 @@ public class PhotoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Photo> getPhotoById(@PathVariable("id") Long id) {
+    public ResponseEntity<Photo> getPhotoById(@PathVariable("id") String id) {
         try {
             Optional<Photo> photoData = photoService.getPhotoById(id);
             if (photoData.isPresent()) {
@@ -66,7 +66,7 @@ public class PhotoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Photo> updatePhoto(@PathVariable("id") Long id, @RequestBody Photo photo) {
+    public ResponseEntity<Photo> updatePhoto(@PathVariable("id") String id, @RequestBody Photo photo) {
         try {
             Optional<Photo> updatedPhoto = photoService.updatePhoto(id, photo);
             if (updatedPhoto.isPresent()) {
@@ -81,7 +81,7 @@ public class PhotoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deletePhoto(@PathVariable("id") Long id) {
+    public ResponseEntity<HttpStatus> deletePhoto(@PathVariable("id") String id) {
         try {
             boolean deleted = photoService.deletePhoto(id);
             if (deleted) {

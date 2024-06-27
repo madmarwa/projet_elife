@@ -1,6 +1,7 @@
 package com.app.backend.dao.entities;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,9 +12,10 @@ import jakarta.persistence.Id;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "specialite")
-public class Specialite {
+@Document(collection = "speciality")
+@Builder
+public class Speciality {
     @Id
-    private Long id;
+    private String id;
     private String name;
 }

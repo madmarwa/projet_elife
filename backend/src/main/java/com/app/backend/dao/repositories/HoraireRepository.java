@@ -10,7 +10,7 @@ import com.app.backend.dao.entities.Horaire;
 import com.app.backend.dao.entities.User;
 
 @RepositoryRestResource
-public interface HoraireRepository extends MongoRepository<Horaire, Long> {
+public interface HoraireRepository extends MongoRepository<Horaire, String> {
 
     List<Horaire> findAllByMedecin(User medecin);
 

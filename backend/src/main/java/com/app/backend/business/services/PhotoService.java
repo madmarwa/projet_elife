@@ -9,8 +9,8 @@ public interface PhotoService {
 
     Photo createPhoto(Photo photo);
     List<Photo> getAllPhotos();
-    Optional<Photo> getPhotoById(Long id);
-    Optional<Photo> updatePhoto(Long id, Photo photo);
-    boolean deletePhoto(Long id);
+    Optional<Photo> getPhotoById(String id);
+    Optional<Photo> updatePhoto(String id, Photo photo);
+    boolean deletePhoto(String id);
     void deleteAllPhotos();
 }

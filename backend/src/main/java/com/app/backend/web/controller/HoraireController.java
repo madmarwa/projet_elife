@@ -1,8 +1,8 @@
 package com.app.backend.web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,90 +11,81 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
-
+import com.app.backend.business.services.HoraireService;
+import com.app.backend.business.services.UserService;
 import com.app.backend.dao.entities.Horaire;
 import com.app.backend.dao.entities.User;
-import com.app.backend.dao.repositories.HoraireRepository;
-import com.app.backend.dao.repositories.UserRepository;
+import com.app.backend.web.dto.HoraireDTO;
 
 @RestController
 @RequestMapping("/api/horaire")
 public class HoraireController {
-    @Autowired
-    private HoraireRepository horaireRepository;
-    @Autowired
-    private UserRepository userRepository;
+    
+    private final UserService userService;
+    private final HoraireService horaireService;
+
+    public HoraireController(UserService userService,HoraireService horaireService) {
+        this.horaireService = horaireService;
+        this.userService=userService;
+    }
 
     @GetMapping()
-    public List<Horaire> getAllHoraire() {
-        return horaireRepository.findAll();
+    public ResponseEntity<?> getAllHoraire() {
+
+        List<HoraireDTO> horaires = this.horaireService.getAllHoraires()
+                .stream()
+                .map(HoraireDTO::toHoraireDTO)
+                
+                .collect(Collectors.toList());     
+        return new ResponseEntity<>(horaires, HttpStatus.OK);
+
 
     }
-    @GetMapping("/{id}")
-    public ResponseEntity<Horaire> getHoraireById(@PathVariable("id") Long id) {
-        Optional<Horaire> horaireData = horaireRepository.findById(id);
-
-        if (horaireData.isPresent()) {
-            return new ResponseEntity<>(horaireData.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-    }
+    
     @GetMapping("/doctor/{id}")
-    public List<Horaire> getAllHoraireByDoctor(@PathVariable("id") Long id) {
-        User medecin=userRepository.findById(id).get();
-        return horaireRepository.findAllByMedecin(medecin);
+    public ResponseEntity<?> getAllHoraireByDoctor(@PathVariable("id") String id) {
+        User medecin=userService.findById(id).get();
+        List<HoraireDTO> horaires = this.horaireService.findByMedecin(medecin)
+                .stream()
+                .map(HoraireDTO::toHoraireDTO)
+                
+                .collect(Collectors.toList());     
+        return new ResponseEntity<>(horaires, HttpStatus.OK);
 
     }
 
-    @PostMapping("")
-    public ResponseEntity<Horaire> createHoraire(@RequestBody Horaire horaire) {
-        Horaire savedHoraire = horaireRepository.save(horaire);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(savedHoraire.getId()).toUri();
-        return ResponseEntity.created(location).build();
-
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getHoraireById(@PathVariable String id) {
+        HoraireDTO horaire = HoraireDTO.toHoraireDTO(this.horaireService.findById(id));
+        return new ResponseEntity<>(horaire, HttpStatus.OK);
     }
 
+    @PostMapping()
+    @PreAuthorize("hasAuthority('WRITE_PRIVILEGE') and hasRole('ADMIN','DOCTOR')")
+    public ResponseEntity<?> addHoraire(@RequestBody HoraireDTO horaireDTO)  {
+        Horaire horaire = HoraireDTO.fromHoraireDTO(horaireDTO);
+        return new ResponseEntity<>(this.horaireService.save(horaire), HttpStatus.CREATED);
+    }
+
+    
     @PutMapping("/{id}")
-    public ResponseEntity<Horaire> updateHoraire(@PathVariable("id") Long id, @RequestBody Horaire horaire) {
+    @PreAuthorize("hasAuthority('UPDATE_PRIVILEGE') and hasRole('ADMIN','DOCTOR')")
+    public ResponseEntity<?> updateHoraire(@PathVariable String id, @RequestBody HoraireDTO horaireDTO){
+        Horaire horaire = HoraireDTO.fromHoraireDTO(horaireDTO);
+        return new ResponseEntity<>(this.horaireService.updateHoraire(id, horaire), HttpStatus.OK);
 
-        Optional<Horaire> horaireOptional = horaireRepository.findById(id);
-        if (!horaireOptional.isPresent())
-            return ResponseEntity.notFound().build();
-        horaire.setId(id);
-        horaireRepository.save(horaire);
-        return ResponseEntity.noContent().build();
     }
-
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteHoraire(@PathVariable("id") Long id) {
-        try {
-            horaireRepository.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-    }
-
-    @DeleteMapping("")
-    public ResponseEntity<HttpStatus> deleteAllHoraire() {
-        try {
-            horaireRepository.deleteAll();
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    @PreAuthorize("hasAuthority('DELETE_PRIVILEGE') and hasRole('ADMIN','DOCTOR')")
+    public ResponseEntity<?> deleteHoraire(@PathVariable String id) {
+        this.horaireService.deleteById(id);
+        return new ResponseEntity<>( HttpStatus.NO_CONTENT);
     }
 
 }
