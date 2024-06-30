@@ -36,7 +36,7 @@ public class SecurityConfiguration {
         http
             .authorizeHttpRequests((requests) -> requests
                 // Allows access without authentication to /api/auth/** and /webjars/** endpoints
-                .requestMatchers("/api/auth/**", "/webjars/**").permitAll()
+                .requestMatchers("/api/auth/**", "/webjars/**","/api/specialites/**").permitAll()
                 // All other requests must be authenticated
                 .anyRequest().authenticated()
             )

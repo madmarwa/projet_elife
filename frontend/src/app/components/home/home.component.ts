@@ -1,5 +1,5 @@
 import { Speciality } from './../../shared/Speciality/speciality';
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpecialityService } from 'src/app/services/Speciality/speciality.service';
 
@@ -16,12 +16,14 @@ export class HomeComponent  implements OnInit {
 
   constructor(private router: Router,
     private specialityService: SpecialityService){}
+
   ngOnInit(): void {
     this.specialityService.getSpecialties().subscribe(
       {
-        next: (spl: Speciality[]) => { this.sp = spl; this.isWaiting = false; this.errMsg = "" },
+        next: (spl: Speciality[]) => { this.sp = spl;  },
         error: (err) => { this.sp = [], this.isWaiting = false; this.errMsg = err }
       })
+
   }
 
 }

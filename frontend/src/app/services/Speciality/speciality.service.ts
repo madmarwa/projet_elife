@@ -20,9 +20,7 @@ export class SpecialityService {
 
   getSpecialties(): Observable<Speciality[]> {
     return this.http
-      .get<Speciality[]>(this.baseUrl + "specialites", {
-        withCredentials: true,
-      })
+      .get<Speciality[]>(this.baseUrl + "specialites")
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
