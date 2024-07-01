@@ -31,7 +31,6 @@ export class AuthService {
       }),
       withCredentials: true // Include credentials (cookies) in the request
     };
-
     return this.http.post<AuthResponseData>(this.baseURL + 'auth/signin', null, httpOptions).pipe(
       catchError(err => {
         let errorMessage = 'An unknown error occurred!';

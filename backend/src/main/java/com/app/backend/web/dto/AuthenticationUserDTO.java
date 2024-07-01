@@ -2,8 +2,8 @@ package com.app.backend.web.dto;
 
 import java.util.List;
 
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import org.springframework.security.core.authority.SimpleGrantedAuthority;  
 import com.app.backend.dao.entities.User;
 
 public record AuthenticationUserDTO(
@@ -11,6 +11,7 @@ public record AuthenticationUserDTO(
         String email,
         List<String> roles) {
     public static AuthenticationUserDTO toAuthenticationUserDTO(User user) {
+        System.out.println(" ");System.out.println("dto.auth");
         List<String> roles = user.getRole().getAuthorities()
                 .stream()
                 .map(SimpleGrantedAuthority::getAuthority)

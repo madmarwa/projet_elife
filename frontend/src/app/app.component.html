@@ -1,1 +1,19 @@
-<router-outlet></router-outlet>
+
+<div class="container">
+
+
+    <div *ngIf="!isAuth"  >
+        <div>
+            <a class="btn" routerLink="/signin">Sign In</a>
+            <a class="btn" routerLink="/signup">Sign Up</a>
+        </div>
+    </div>
+    <div *ngIf="isAuth">
+        <a class="btn btn-danger" (click)="onSignOut()">Sign Out</a>
+    </div>
+
+
+
+  <router-outlet></router-outlet>
+
+</div>

@@ -81,6 +81,7 @@ public class ApplicationSecurityConfig {
    // Bean for JwtAuthenticationConverter
    @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
+        System.out.println(" ");System.out.println("Conv.auth");
         JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
         // Remove the SCOPE_ prefix
         grantedAuthoritiesConverter.setAuthorityPrefix("");

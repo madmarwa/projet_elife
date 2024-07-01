@@ -33,10 +33,11 @@ public class SecurityConfiguration {
     // Defines the SecurityFilterChain bean
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        System.out.println(" ");System.out.println("Sec.conf");
         http
             .authorizeHttpRequests((requests) -> requests
                 // Allows access without authentication to /api/auth/** and /webjars/** endpoints
-                .requestMatchers("/api/auth/**", "/webjars/**","/api/specialites/**").permitAll()
+                .requestMatchers("/api/auth/**", "/webjars/**","/api/**").permitAll()
                 // All other requests must be authenticated
                 .anyRequest().authenticated()
             )
@@ -62,6 +63,7 @@ public class SecurityConfiguration {
             // Configures the custom authentication provider
             .authenticationProvider(authenticationProvider);
 
+            
         // Builds and returns the SecurityFilterChain object
         return http.build();
     }

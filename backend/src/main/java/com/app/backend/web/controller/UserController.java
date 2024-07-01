@@ -23,6 +23,12 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
+    @GetMapping("/doctors")
+    public ResponseEntity<List<User>> getDoctors() {
+        List<User> users = userService.findDoctors();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable String id) {
         Optional<User> user = userService.findById(id);

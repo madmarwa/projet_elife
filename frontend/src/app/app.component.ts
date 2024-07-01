@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'frontend';
 
-  // Indicates if the user is authenticated
   isAuth: boolean = false;
 
   // Shows admin board if user has admin role

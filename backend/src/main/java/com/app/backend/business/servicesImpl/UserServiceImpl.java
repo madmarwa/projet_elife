@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.backend.business.services.UserService;
 import com.app.backend.dao.entities.User;
+import com.app.backend.dao.enums.Role;
 import com.app.backend.dao.repositories.UserRepository;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findByRole(String role) {
-        return userRepository.findByRole(role);
+    public List<User> findDoctors() {
+        return userRepository.findByRole(Role.DOCTOR);
     }
 }

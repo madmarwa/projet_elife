@@ -38,6 +38,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public AuthenticationUserDTO login(Authentication authentication) {
+        System.out.println(" ");System.out.println("S.auth");
         // Retrieve the user principal from the authentication object after basic authentication
         User user = (User) authentication.getPrincipal();
         // Convert the User entity to AuthenticationUserDTO and return it

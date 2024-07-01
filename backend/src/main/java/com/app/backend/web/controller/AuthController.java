@@ -20,6 +20,7 @@ import com.app.backend.web.dto.RegisterUserDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
+
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -41,6 +42,7 @@ public class AuthController {
     // Endpoint for user login (sign-in)
     @PostMapping("/signin")
     public ResponseEntity<AuthenticationUserDTO> auth(Authentication authentication) {
+        System.out.println(" ");System.out.println("Cont.auth");
         // Authenticate the user and generate the authenticated user DTO
         AuthenticationUserDTO authenticationUserDTO = this.authenticationService.login(authentication);
         // Generate a JWT cookie
@@ -54,6 +56,7 @@ public class AuthController {
     // Endpoint for user registration (sign-up)
     @PostMapping("/signup")
     public ResponseEntity<RegisterUserDTO> register(@Valid @RequestBody RegisterUserDTO registerUserDTO) throws DuplicateUserException {
+        System.out.println(" ");System.out.println("Cont.auth.up");
         // Register the user and return the registered user DTO
         User user = authenticationService
                 .register(RegisterUserDTO.fromRegisterUserDTO(registerUserDTO, passwordEncoder));
