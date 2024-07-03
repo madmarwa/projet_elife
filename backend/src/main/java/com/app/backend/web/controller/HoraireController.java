@@ -48,7 +48,7 @@ public class HoraireController {
     
     @GetMapping("/doctor/{id}")
     public ResponseEntity<?> getAllHoraireByDoctor(@PathVariable("id") String id) {
-        User medecin=userService.findById(id).get();
+        User medecin=userService.findById(id);
         List<HoraireDTO> horaires = this.horaireService.findByMedecin(medecin)
                 .stream()
                 .map(HoraireDTO::toHoraireDTO)

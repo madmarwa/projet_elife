@@ -27,6 +27,7 @@ public class Photo {
     @Id
     private String  id;
     private byte[] file;
+    private String name;
     private String  type;
     private boolean photoProfil;
     private Date shareDate;

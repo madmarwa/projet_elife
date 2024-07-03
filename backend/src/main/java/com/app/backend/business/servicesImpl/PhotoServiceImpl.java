@@ -10,6 +10,8 @@ import com.app.backend.business.services.PhotoService;
 import com.app.backend.dao.entities.Photo;
 import com.app.backend.dao.repositories.PhotoRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class PhotoServiceImpl implements PhotoService {
 
@@ -22,9 +24,13 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
-    public Optional<Photo> getPhotoById(String id) {
-        return photoRepository.findById(id);
+    public Photo getPhotoById(String id) {
+        if (id == null) {
+            throw new IllegalArgumentException("ID cannot be null");
+        }
+        return photoRepository.findById(id) .orElseThrow(() -> new EntityNotFoundException("Horaire with id: " + id + " not found"));
     }
+
 
     @Override
     public Photo createPhoto(Photo photo) {
@@ -52,4 +58,5 @@ public class PhotoServiceImpl implements PhotoService {
     public void deleteAllPhotos() {
         photoRepository.deleteAll();
     }
+
 }

@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/Auth/auth.service';
+import { PhotoService } from 'src/app/services/Photo/photo.service';
 
 @Component({
   selector: 'app-signin',
@@ -15,7 +16,9 @@ export class SigninComponent  implements OnInit, OnDestroy {
   AuthUserSub!: Subscription; // Subscription to the authenticated user observable
 
   // Inject AuthService and Router in the constructor
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService,
+    private photoService:PhotoService,
+     private router: Router) { }
 
   // Lifecycle hook that is called after Angular has initialized all data-bound properties
   ngOnInit() {
@@ -58,4 +61,18 @@ export class SigninComponent  implements OnInit, OnDestroy {
     // Unsubscribe from the AuthenticatedUser$ observable to prevent memory leaks
     this.AuthUserSub.unsubscribe();
   }
+
+  img:any;
+  getPhotoUser(idUser:any){
+    this.photoService.getByUser(idUser).subscribe(res => {
+      if(res)
+        this.img='data:'+res.type+';base64,' + res.file;
+      else{
+            this.img='';
+        }
+    })
+  }
+
+
+
 }

@@ -1,1 +1,11 @@
 <h1 *ngFor="let d of doctors" >{{d.firstname}}</h1>
+
+<input
+  type="file"
+  id="file"
+  (change)="onUpload($event)"
+  [formControl]="fileControl"
+  [multiple]="false"
+  accept=".png, .jpg, .jpeg"
+  #fileInput
+>

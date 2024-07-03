@@ -15,6 +15,7 @@ import { DoctorBoardComponent } from './components/doctor-board/doctor-board.com
 import { AdminBoardComponent } from './components/admin-board/admin-board.component';
 import { PatientBoardComponent } from './components/patient-board/patient-board.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

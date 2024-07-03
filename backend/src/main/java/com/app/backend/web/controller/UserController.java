@@ -1,4 +1,5 @@
 package com.app.backend.web.controller;
+import com.app.backend.dao.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
@@ -31,9 +34,11 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable String id) {
-        Optional<User> user = userService.findById(id);
+        Optional<User> user = userRepository.findById(id);
         return user.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                    .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
+
     }
 
     @PostMapping
@@ -44,8 +49,8 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User user) {
-        Optional<User> existingUser = userService.findById(id);
-        if (existingUser.isPresent()) {
+        User existingUser = userService.findById(id);
+        if (existingUser!=null) {
             user.setId(id);
             User updatedUser = userService.save(user);
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);

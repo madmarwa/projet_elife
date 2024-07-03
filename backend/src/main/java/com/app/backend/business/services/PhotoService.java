@@ -9,7 +9,7 @@ public interface PhotoService {
 
     Photo createPhoto(Photo photo);
     List<Photo> getAllPhotos();
-    Optional<Photo> getPhotoById(String id);
+    Photo getPhotoById(String id);
     Optional<Photo> updatePhoto(String id, Photo photo);
     boolean deletePhoto(String id);
     void deleteAllPhotos();

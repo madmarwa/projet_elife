@@ -11,6 +11,7 @@ import lombok.Builder;
 @Builder
 public record PhotoDTO(
     String id,
+    String name,
     byte[] file,
     boolean photoProfil,
     Date shareDate,
@@ -19,6 +20,7 @@ public record PhotoDTO(
     public static PhotoDTO toPhotoDTO(Photo photo) {
         return PhotoDTO.builder()
             .id(photo.getId())
+            .name(photo.getName())
             .file(photo.getFile())
             .photoProfil(photo.isPhotoProfil())
             .shareDate(photo.getShareDate())
@@ -29,6 +31,7 @@ public record PhotoDTO(
     public static Photo fromPhotoDTO(PhotoDTO photoDTO) {
         return Photo.builder()
             .id(photoDTO.id())
+            .name(photoDTO.name())
             .file(photoDTO.file())
             .photoProfil(photoDTO.photoProfil())
             .shareDate(photoDTO.shareDate())

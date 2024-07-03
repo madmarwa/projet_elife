@@ -8,8 +8,9 @@ import com.app.backend.dao.entities.User;
 import com.app.backend.dao.enums.Role;
 import com.app.backend.dao.repositories.UserRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -23,8 +24,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findById(String id) {
-        return userRepository.findById(id);
+    public User findById(String id) {
+
+        if (id == null) {
+            throw new IllegalArgumentException("ID cannot be null");
+        }
+        
+        return this.userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Horaire with id: " + id + " not found"));
+   
     }
 
     @Override

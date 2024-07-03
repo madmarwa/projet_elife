@@ -2,6 +2,7 @@ import { User } from "../user";
 
 export class Photo {
   id: string;
+  name : string;
   file: any;
   type: string;
   photoProfil: boolean;
@@ -10,6 +11,7 @@ export class Photo {
 
   constructor(
     id: string,
+    name: string,
     file: any,
     type: string,
     photoProfil: boolean,
@@ -17,6 +19,7 @@ export class Photo {
     user: User
   ) {
     this.id = id;
+    this.name=name;
     this.file = file;
     this.type = type;
     this.photoProfil = photoProfil;
