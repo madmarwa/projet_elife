@@ -101,16 +101,18 @@ public class PhotoController {
         }
     }
 
-    @PostMapping("/photo/files")
-    public ResponseEntity<?> handleFileUpload(@RequestBody MultipartFile file) {
+    @PostMapping("/photo/files/{id}")
+    public ResponseEntity<?> handleFileUpload(@RequestBody MultipartFile file,@PathVariable("id") String id) {
         String message = "";
         Photo photo = new Photo();
+        User user= userService.findById(id);
         try {
             photo.setFile(compressBytes(file.getBytes()));
             photo.setType(file.getContentType());
             photo.setPhotoProfil(false);
             photo.setShareDate(new Date());
             photo.setName(file.getOriginalFilename());
+            photo.setUser(user);
             photoService.createPhoto(photo);
 
             message = "You successfully uploaded ";

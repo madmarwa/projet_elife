@@ -1,3 +1,4 @@
+import { User } from 'src/app/shared/user';
 import { Question } from 'src/app/shared/Question/question';
 import { ReponseService } from './../../services/Reponse/reponse.service';
 import { QuestionService } from './../../services/Question/question.service';
@@ -36,7 +37,6 @@ export class HomeComponent  implements OnInit {
     }
 
   ngOnInit(): void {
-    this.getPhotoUser("6682f6af20e64617903c67aa");
   }
 
 
@@ -80,13 +80,13 @@ export class HomeComponent  implements OnInit {
   }
 
 
-  img:any;
+  image:any;
   getPhotoUser(idUser:string){
     this.photoService.getByUser(idUser).subscribe(res => {
       if(res)
-        this.img='data:'+res.type+';base64,' + res.file;
+        this.image='data:'+res.type+';base64,' + res.file;
       else{
-            this.img='';
+            this.image='';
         }
     })
   }
@@ -113,7 +113,8 @@ export class HomeComponent  implements OnInit {
     onUpload(event: Event): void {
       const input = event.target as HTMLInputElement;
       if (input.files && input.files.length > 0) {
-        this.photoService.uploadImg(input.files[0]).subscribe(res => {
+
+        this.photoService.uploadImg(input.files[0],"6682f6af20e64617903c67aa").subscribe(res => {
           if  (res instanceof HttpResponse) {
             console.log('File is completely uploaded!');
           }

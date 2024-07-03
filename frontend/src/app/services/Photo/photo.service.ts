@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { ProcessHttpmsgService } from '../ProcessHttpmsg/process-httpmsg.service';
 import { Observable, catchError } from 'rxjs';
 import { Photo } from 'src/app/shared/Photo/photo';
+import { User } from 'src/app/shared/user';
 
 @Injectable({
   providedIn: 'root'
@@ -44,12 +45,12 @@ updatePhoto(photo: Photo):Observable<Photo>{
 
 formData!: FormData
 
-uploadImg(file: File): Observable<HttpEvent<any>> {
+uploadImg(file: File,iduser:string): Observable<HttpEvent<any>> {
   this.formData = new FormData();
 
   this.formData.append('file', file);
 
-  const req = new HttpRequest('POST', `${this.baseUrl}photos/photo/files`, this.formData, {
+  const req = new HttpRequest('POST', `${this.baseUrl}photos/photo/files/${iduser}`, this.formData, {
     reportProgress: true,
     responseType: 'json'
   });
@@ -71,18 +72,7 @@ userImg(file: File, id: String): Observable<HttpEvent<any>> {
   return this.http.request(req);
 }
 
-/*poster(file: File, id: string): Observable<HttpEvent<any>> {
-  this.formData = new FormData();
-
-  this.formData.append('file', file);
-
-  const req = new HttpRequest('POST', `${this.baseUrl}/photos/user/${id}`, this.formData, {
-    reportProgress: true,
-    responseType: 'json'
-
-  });
-
-  return this.http.request(req);
-}*/
-
+deleteById(id: string): Observable<void> {
+  return this.http.delete<void>(this.baseUrl+"photos/"+id,{ withCredentials: true});
+}
 }
