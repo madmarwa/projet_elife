@@ -1,8 +1,50 @@
-
 <div class="container">
 
+  <div id="header">
+    <div class="wrapper">
+      <div class="header-center">
+        <div class="logo"><a target="_blank" href="#" title="Potomac eStore"><img src="assets/logo.png"
+              alt="Potomac eStore" title="Potomac eStore" /></a>
+        </div>
+        <div id="social">
+          <ul class="address">
+            <li><a target="_blank" href="#">acucueil</a></li>
+            <li><a target="_blank" href="#">prendre un rendez vous</a></li>
+            <li><a target="_blank" href="#">Inscription médecin</a></li>
+          </ul>
+        </div>
+        <div class="button"><button class="btn btn-danger"><img src="assets/logomed.png" alt="Potomac eStore"
+              title="Potomac eStore" />Vous êtes médecin</button></div>
+      </div>
+    </div>
 
-    <div *ngIf="!isAuth"  >
+  </div>
+
+
+
+
+
+
+
+<router-outlet></router-outlet>
+
+  <div id="footer">
+    <div class="wrapper">
+
+      <div class="logo-foot"><a target="_blank" href="#" title="Potomac eStore"><img src="assets/logo.png"
+            alt="Potomac eStore" title="Potomac eStore" /></a>
+      </div>
+      <div id="menu">
+        <ul class="lev1">
+          <li><a target="_blank" href="#">acucueil</a></li>
+          <li><a target="_blank" href="#">prendre un rendez vous</a></li>
+          <li><a target="_blank" href="#">Inscription médecin</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<!--<div *ngIf="!isAuth"  >
         <div>
             <a class="btn" routerLink="/signin">Sign In</a>
             <a class="btn" routerLink="/signup">Sign Up</a>
@@ -10,10 +52,8 @@
     </div>
     <div *ngIf="isAuth">
         <a class="btn btn-danger" (click)="onSignOut()">Sign Out</a>
-    </div>
+    </div>-->
 
 
-
-  <router-outlet></router-outlet>
 
 </div>

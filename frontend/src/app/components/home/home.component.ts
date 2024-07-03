@@ -126,7 +126,11 @@ export class HomeComponent  implements OnInit {
       }
     }
 
-
-
+    name:string="";
+    speciality!: Speciality;
+    onSubmit(){
+      this.specialityService.addSpeciality(this.speciality)
+        .subscribe()
+    }
 
 }

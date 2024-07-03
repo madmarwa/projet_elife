@@ -27,7 +27,8 @@ public record RegisterUserDTO(
         @NotNull Role role) {
   
     public static User fromRegisterUserDTO(RegisterUserDTO registerUserDTO, PasswordEncoder passwordEncoder) {
-        System.out.println(" ");System.out.println("dto.from");
+
+
         return User.builder()
                 .firstname(registerUserDTO.firstname())
                 .lastname(registerUserDTO.lastname())

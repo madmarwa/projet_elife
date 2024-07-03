@@ -36,8 +36,8 @@ public class RendezVousServiceImpl implements RendezVousService {
     public Optional<RendezVous> updateRendezVous(String id, RendezVous rendezVous) {
         return rendezVousRepository.findById(id).map(existingRendezVous -> {
             existingRendezVous.setDateDemande(rendezVous.getDateDemande());
-            existingRendezVous.setDate(rendezVous.getDate());
-            existingRendezVous.setHeure(rendezVous.getHeure());
+            existingRendezVous.setDateRDV(rendezVous.getDateRDV());
+            existingRendezVous.setHeureRDV(rendezVous.getHeureRDV());
             existingRendezVous.setValide(rendezVous.isValide());
             existingRendezVous.setVu(rendezVous.isVu());
             existingRendezVous.setPatient(rendezVous.getPatient());

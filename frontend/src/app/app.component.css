@@ -1,0 +1,369 @@
+/**********************/
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap');
+
+/* social */
+.container *,
+.page-container *:before,
+.page-container *:after {
+  box-sizing: border-box;
+  outline: medium none;
+}
+
+* {
+  margin: 0;
+
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+}
+
+a,
+a:hover {
+  text-decoration: none
+}
+
+img {
+  border: none;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none
+}
+
+.container {
+  overflow: hidden;
+  margin: auto;
+  display: inline-block;
+  width: 100%;
+
+  text-align: center;
+  padding: 00px 0 0px;
+}
+
+body {
+  background-color: transparent;
+}
+
+.container {
+  background: url(src/assets/bg-cont.png) center -100px no-repeat;
+  margin: auto;
+}
+
+/**********************header************************/
+#header {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  padding: 0 0px;
+  display: inline-block;
+  margin: 0px auto 0;
+  position: relative;
+}
+
+#header .wrapper {
+  width: 100%;
+  padding: 0;
+  text-align: center;
+  padding: 00px 0;
+  margin: 0px 0 0px 0;
+  display: inline-block;
+  max-width: 1250px;
+  position: relative;
+}
+
+#header .header-center {
+  width: 100%;
+  text-align: center;
+  padding: 0 0 0px;
+  display: inline-block;
+  position: relative;
+}
+
+#header .logo {
+  float: left;
+  z-index: 9;
+  padding: 0px;
+  width: 30%;
+  display: inline-block;
+  position: relative;
+  margin: 15px auto 0;
+  text-align: left;
+}
+
+#header .logo a {
+  float: left;
+  margin: auto;
+  position: relative;
+  text-align: left;
+}
+
+#social {
+  float: left;
+  width: 50%;
+  position: relative;
+  overflow: visible;
+  padding: 00px 0px;
+  z-index: 1;
+  max-width: 980px;
+  margin: 70px auto 0;
+  text-align: right;
+  display: inline-table;
+}
+
+#social .address {
+  display: inline-block;
+  margin: auto;
+  float: none;
+  text-align: center;
+  position: relative;
+  z-index: 9999;
+}
+
+#social .address a {
+  color: #000;
+  width: 100%;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0px 0px 10px;
+  font: bold 14px/15px 'Kanit', sans-serif;
+  position: relative;
+  float: none;
+}
+
+#social .address li:first-child a {
+  padding-left: 0;
+  border-left: none
+}
+
+#social .address li:last-child a {
+  padding-right: 0;
+}
+
+#social .address li a:hover {
+  border-bottom: solid 5px #db2e34;
+}
+
+#social .address li {
+  display: inline-block;
+  margin: auto;
+  padding: 0px 10px;
+}
+
+.button {
+  display: inline-block;
+  margin: 60px auto 0;
+  position: relative;
+  padding: 5px;
+  max-width: 200px;
+  text-align: left;
+  width: 20%;
+  background-color: #dc3545;
+  text-align: left;
+}
+
+.button img {
+  padding: 0 5px 0;
+}
+
+.btn-danger:hover {
+  color: #000;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* HomeComponent.css */
+.appointment-booking {
+
+  padding: 20px 0;
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 140px 0;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.banner .content {
+  text-align: center;
+}
+
+.banner h1 {
+  color: #ff4d4f;
+  font-size: 2.5rem;
+  float: right;
+  width: 60%;
+  font: bold 25px/30px 'Kanit', sans-serif;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.search {
+  width: 100%;
+  padding: 40px 10px 0;
+  display: inline-block;
+  text-align: right;
+
+}
+
+.search input[type="text"] {
+  width: 250px;
+  padding: 10px;
+  margin: 0 5px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+}
+
+.search button {
+  background-color: #1890ff;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.search button i {
+  font-size: 1rem;
+}
+
+/* home.component.css */
+.why-choose-e-sante {
+  padding: 40px 20px;
+
+  text-align: center;
+}
+
+.why-choose-e-sante h2,
+.dropdown h2 {
+  color: #000;
+  width: 100%;
+  text-align: left;
+  display: inline-block;
+  font: bold 20px / 20px 'Kanit', sans-serif;
+  border-bottom: solid 5px #1890ff;
+  margin-bottom: 21px;
+  padding: 0 0 10px;
+}
+
+.features {
+  display: inline-block;
+  width: 100%;
+}
+
+.feature {
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  box-shadow: 10px 5px 5px #ddd;
+  padding: 20px;
+  margin: 10px;
+  display: inline-block;
+  width: 80%;
+  max-width: 600px;
+}
+
+.feature.feau1 {
+  float: left;
+}
+
+.feature.feau2 {
+  float: none;
+}
+
+.feature.feau3 {
+  float: right;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  color: #ff4d4f;
+  font: 600 16px / 20px 'Kanit', sans-serif;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font: 400 14px / 20px 'Kanit', sans-serif;
+  color: #595959;
+}
+
+.card-header button {
+  text-align: left;
+  width: 100%;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.card-header button:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.card-body h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-body h4,
+.card-body h5 {
+  font-size: 1rem;
+}
+
+.card-body p {
+  margin-top: 1rem;
+}
+
+.btn-secondary {
+  color: #000;
+  font: bold 20px / 20px 'Kanit', sans-serif;
+  background-color: transparent;
+  border-color: #000;
+  width: 20%;
+  height: 40px;
+}
+
+#footer .logo-foot {
+  width: 60%;
+  display: inline-block;
+}
+
+#footer {
+  width: 100%;
+  display: inline-block;
+  padding: 80px 0 80px;
+}
+
+#footer .lev1 li {
+  display: inline-block;
+}
+
+#footer #menu {
+  display: inline-block;
+  width: 100%;
+  padding: 50px 0 0;
+}
+
+#footer .lev1 a {
+  color: #000;
+  width: 100%;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0px 10px 0px;
+  font: bold 14px / 15px 'Kanit', sans-serif;
+  position: relative;
+  float: none;
+}
+
+#footer .lev1 a:hover {
+  color: #db2e34
+}

@@ -21,7 +21,6 @@ public class CookieBearerTokenResolver implements BearerTokenResolver {
     public String resolve(HttpServletRequest request) {
         // Retrieve the cookie by name from the request
         Cookie cookie = WebUtils.getCookie(request, cookieName);
-        System.out.println(" ");System.out.println("Cook + "+cookieName);
         
         // Check if the cookie exists and has a non-empty value
         if (cookie != null && StringUtils.hasText(cookie.getValue())) {

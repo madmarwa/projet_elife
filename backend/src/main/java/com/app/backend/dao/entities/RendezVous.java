@@ -29,8 +29,8 @@ public class RendezVous {
     //date demande de RDV
     private Date dateDemande;
     //date demandée pour le RDV
-    private Date date;
-    private Time heure;
+    private Date dateRDV;
+    private Time heureRDV;
     private boolean valide;
     private boolean vu;
     @DBRef

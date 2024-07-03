@@ -11,8 +11,8 @@ import lombok.Builder;
 public record RendezVousDTO(
     String id,
     Date dateDemande,
-    Date date,
-    Time heure,
+    Date dateRDV,
+    Time heureRDV,
     boolean valide,
     boolean vu,
     User patient,
@@ -22,8 +22,8 @@ public record RendezVousDTO(
         return RendezVousDTO.builder()
             .id(rendezVous.getId())
             .dateDemande(rendezVous.getDateDemande())
-            .date(rendezVous.getDate())
-            .heure(rendezVous.getHeure())
+            .dateRDV(rendezVous.getDateRDV())
+            .heureRDV(rendezVous.getHeureRDV())
             .valide(rendezVous.isValide())
             .vu(rendezVous.isVu())
             .patient(rendezVous.getPatient())
@@ -35,8 +35,8 @@ public record RendezVousDTO(
         return RendezVous.builder()
             .id(rendezVousDTO.id())
             .dateDemande(rendezVousDTO.dateDemande())
-            .date(rendezVousDTO.date())
-            .heure(rendezVousDTO.heure())
+            .dateRDV(rendezVousDTO.dateRDV())
+            .heureRDV(rendezVousDTO.heureRDV())
             .valide(rendezVousDTO.valide())
             .vu(rendezVousDTO.vu())
             .patient(rendezVousDTO.patient())

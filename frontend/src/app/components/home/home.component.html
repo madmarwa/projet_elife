@@ -1,4 +1,4 @@
-<h1 *ngFor="let d of doctors" >{{d.firstname}}</h1>
+<!--<h1 *ngFor="let d of doctors" >{{d.firstname}}</h1>
 
 <input
   type="file"
@@ -10,4 +10,65 @@
   #fileInput
 >
 <img style="width: 100%; height:100%;" *ngIf="image!==''" [src]="image" alt="pr-sample25" />
+-->
 
+<div class="product">
+  <div class="warraper">
+    <div id="CentralArea" class="zin-central">
+      <div class="top">
+        <div class="appointment-booking">
+          <div class="banner">
+            <div class="content">
+              <h1>LE SITE DE PRISE DE RENDEZ-VOUS AVEC LES PROFESSIONNELS DE SANTÉ</h1>
+              <div class="search">
+                <input type="text" placeholder="RECHERCHER UN MÉDECIN">
+                <input type="text" placeholder="LOCALISATION">
+                <button type="submit">
+                  <i class="fa fa-search"></i> Rechercher
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- HomeComponent.html -->
+        <div class="why-choose-e-sante">
+          <h2>POURQUOI CHOISIR E-SANTÉ POUR VOS RENDEZ-VOUS MÉDICAUX EN LIGNE</h2>
+          <div class="features">
+            <div class="feature feau1">
+              <h3>PRISE DE RDV MÉDICAL EN LIGNE</h3>
+              <p>Accédez aux disponibilités de vos médecins en ligne et autres professionnels de santé 24/24h et 7/7
+                j. Prenez, recherchez, déplacez ou annulez vos RDV médicaux et paramédicaux en toute liberté.</p>
+            </div>
+            <div class="feature feau2">
+              <h3>SERVICE DE MESSAGERIE MÉDICALE SÉCURISÉE</h3>
+              <p>Outil très utile et simple d'utilisation, la messagerie sécurisée E-Santé permet de rester en
+                contact avec votre médecin traitant ou votre praticien sans le déranger. Quand vous avez besoin de
+                lui poser une question sur une prescription ou lui transmettre des résultats d'analyse, vous lui
+                écrivez un petit message via votre messagerie en ligne et vous recevez sa réponse en toute
+                simplicité et sécurité.</p>
+            </div>
+            <div class="feature feau3">
+              <h3>LA TÉLÉCONSULTATION MÉDICALE</h3>
+              <p>Continuez à vous faire soigner tout en restant chez vous grâce à la téléconsultation médicale
+                proposée par E-Santé. Vous bénéficiez ainsi du même suivi qu'en cabinet sans avoir à vous déplacer.
+                Gagnez en confort et en sécurité car téléconsulter votre médecin en ligne limite les contacts et les
+                risques de contamination.</p>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown">
+          <h2>Question médicale</h2>
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="specialtyDropdown"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Spécialités
+          </button>
+          <div class="dropdown-menu" aria-labelledby="specialtyDropdown">
+            <!-- Utilisez *ngFor pour itérer sur vos spécialités et générer les options du menu -->
+            <a class="dropdown-item" href="#" ></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
