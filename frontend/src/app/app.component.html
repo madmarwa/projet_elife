@@ -1,48 +1,28 @@
 <div class="container">
 
-  <div id="header">
-    <div class="wrapper">
-      <div class="header-center">
-        <div class="logo"><a target="_blank" href="#" title="Potomac eStore"><img src="assets/logo.png"
-              alt="Potomac eStore" title="Potomac eStore" /></a>
-        </div>
-        <div id="social">
-          <ul class="address">
-            <li><a target="_blank" href="#">acucueil</a></li>
-            <li><a target="_blank" href="#">prendre un rendez vous</a></li>
-            <li><a target="_blank" href="#">Inscription médecin</a></li>
+  <nav class="navbar navbar-expand-lg p-md-3">
+        <div id="social"  class="collapse navbar-collapse">
+
+        <a href="#" title="Potomac eStore"  class="logo navbar-brand">
+          <img src="assets/logo.png" alt="Potomac eStore" title="Potomac eStore" />
+        </a>
+          <ul class="address navbar-nav mr-auto d-flex justify-content-end">
+            <li class="nav-item"><a  class="nav-link"  href="#">Acucueil</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Prendre un rendez vous</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Poser une question</a></li>
           </ul>
+          <div class="button my-2 my-md-0">
+            <button class="btn btn-danger" id="btn-med">
+            <img src="assets/logomed.png" alt="Potomac eStore"
+                title="Potomac eStore" class="rounded-pill" />Vous êtes médecin?</button>
+          </div>
         </div>
-        <div class="button"><button class="btn btn-danger"><img src="assets/logomed.png" alt="Potomac eStore"
-              title="Potomac eStore" />Vous êtes médecin</button></div>
-      </div>
-    </div>
 
-  </div>
-
-
-
-
-
+    </nav>
 
 
 <router-outlet></router-outlet>
 
-  <div id="footer">
-    <div class="wrapper">
-
-      <div class="logo-foot"><a target="_blank" href="#" title="Potomac eStore"><img src="assets/logo.png"
-            alt="Potomac eStore" title="Potomac eStore" /></a>
-      </div>
-      <div id="menu">
-        <ul class="lev1">
-          <li><a target="_blank" href="#">acucueil</a></li>
-          <li><a target="_blank" href="#">prendre un rendez vous</a></li>
-          <li><a target="_blank" href="#">Inscription médecin</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
 
 <!--<div *ngIf="!isAuth"  >
         <div>
@@ -56,4 +36,23 @@
 
 
 
+
+
+
+
+
+
 </div>
+<footer class="py-3 my-4 ">
+  <div class="logo-foot"><a target="_blank" href="#" title="Potomac eStore"><img src="assets/logo.png"
+    alt="Potomac eStore" title="Potomac eStore" /></a>
+</div>
+  <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Acucueil</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Prendre un rendez-vous</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Poser une question</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Connexion</a></li>
+  </ul>
+  <p class="text-center text-body-secondary">© 2024 Copyright: E-Santé. Tous droits réservés.
+    <a class="text-body" href="https://mdbootstrap.com/">E-Sante.com</a></p>
+</footer>

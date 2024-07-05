@@ -31,6 +31,52 @@
                                   required</small>
                           </div>
                       </div>
+
+                      <div class="form-group">
+                        <label for="address">Adresse:</label>
+                        <input type="text" formControlName="address" id="address" class="form-control">
+                        <div class="text-danger"
+                            *ngIf="registerForm.get('address')?.touched && registerForm.get('address')?.invalid">
+                            <small *ngIf="registerForm.get('address')?.hasError('address')">Last Name is
+                                required</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="address">Adresse:</label>
+                      <input type="text" formControlName="address" id="address" class="form-control">
+                      <div class="text-danger"
+                          *ngIf="registerForm.get('address')?.touched && registerForm.get('address')?.invalid">
+                          <small *ngIf="registerForm.get('address')?.hasError('address')">Address is
+                              required</small>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="phone">Téléphone:</label>
+                    <input type="text" formControlName="phone" id="phone" class="form-control">
+
+                </div>
+
+                      <div class="form-group">
+                        <label for="sexe">Sexe</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" formControlName="sexe" id="sexeFemme"
+                                value="femme">
+                            <label class="form-check-label" for="sexeFemme">Femme</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" formControlName="sexe" id="sexeHomme"
+                                value="homme">
+                            <label class="form-check-label" for="sexeHomme">Homme</label>
+                        </div>
+                        <div class="text-danger"
+                            *ngIf="registerForm.get('sexe')?.touched && registerForm.get('sexe')?.invalid">
+                            <small *ngIf="registerForm.get('sexe')?.hasError('required')">Role is required</small>
+                        </div>
+                      </div>
+
+
                       <div class="form-group">
                           <label for="email">Email</label>
                           <input type="email" formControlName="email" id="email" class="form-control">
@@ -66,13 +112,13 @@
                           <label for="role">Role</label><br>
                           <div class="form-check form-check-inline">
                               <input class="form-check-input" type="radio" formControlName="role" id="roleUser"
-                                  value="USER">
-                              <label class="form-check-label" for="roleUser">User</label>
+                                  value="PATIENT">
+                              <label class="form-check-label" for="roleUser">Patient</label>
                           </div>
                           <div class="form-check form-check-inline">
                               <input class="form-check-input" type="radio" formControlName="role" id="roleAdmin"
-                                  value="ADMIN">
-                              <label class="form-check-label" for="roleAdmin">Admin</label>
+                                  value="DOCTOR">
+                              <label class="form-check-label" for="roleAdmin">Medecin</label>
                           </div>
                           <div class="text-danger"
                               *ngIf="registerForm.get('role')?.touched && registerForm.get('role')?.invalid">

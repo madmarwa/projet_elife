@@ -37,4 +37,6 @@ export class SpecialityService {
    updateSpeciality(speciality: Speciality):Observable<Speciality>{
      return this.http.put<Speciality>(this.baseUrl+"specialites/"+speciality.id,speciality,this.httpOptions)
    }
+
+
 }

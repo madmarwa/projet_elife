@@ -1,19 +1,5 @@
-<!--<h1 *ngFor="let d of doctors" >{{d.firstname}}</h1>
-
-<input
-  type="file"
-  id="file"
-  (change)="onUpload($event)"
-  [formControl]="fileControl"
-  [multiple]="false"
-  accept=".png, .jpg, .jpeg"
-  #fileInput
->
-<img style="width: 100%; height:100%;" *ngIf="image!==''" [src]="image" alt="pr-sample25" />
--->
-
 <div class="product">
-  <div class="warraper">
+  <div class="wrapper">
     <div id="CentralArea" class="zin-central">
       <div class="top">
         <div class="appointment-booking">
@@ -31,44 +17,114 @@
           </div>
         </div>
         <!-- HomeComponent.html -->
-        <div class="why-choose-e-sante">
+        <div class="block why-choose-e-sante">
           <h2>POURQUOI CHOISIR E-SANTÉ POUR VOS RENDEZ-VOUS MÉDICAUX EN LIGNE</h2>
-          <div class="features">
-            <div class="feature feau1">
-              <h3>PRISE DE RDV MÉDICAL EN LIGNE</h3>
-              <p>Accédez aux disponibilités de vos médecins en ligne et autres professionnels de santé 24/24h et 7/7
-                j. Prenez, recherchez, déplacez ou annulez vos RDV médicaux et paramédicaux en toute liberté.</p>
+          <div class="features container">
+            <div class="row">
+              <div class="feature feau1 col-6">
+                <h3>PRISE DE RDV MÉDICAL EN LIGNE</h3>
+                <p>Accédez aux disponibilités de vos médecins en ligne et autres professionnels de santé 24/24h et 7/7
+                  j. Prenez, recherchez, déplacez ou annulez vos RDV médicaux et paramédicaux en toute liberté.</p>
+              </div>
+              <div class="col-3"></div>
+              <div class="col-3"></div>
             </div>
-            <div class="feature feau2">
-              <h3>SERVICE DE MESSAGERIE MÉDICALE SÉCURISÉE</h3>
-              <p>Outil très utile et simple d'utilisation, la messagerie sécurisée E-Santé permet de rester en
-                contact avec votre médecin traitant ou votre praticien sans le déranger. Quand vous avez besoin de
-                lui poser une question sur une prescription ou lui transmettre des résultats d'analyse, vous lui
-                écrivez un petit message via votre messagerie en ligne et vous recevez sa réponse en toute
-                simplicité et sécurité.</p>
+            <div class="row">
+              <div class="col-3"></div>
+              <div class="feature feau2 col-6">
+                <h3>SERVICE DE MESSAGERIE MÉDICALE SÉCURISÉE</h3>
+                <p>Outil très utile et simple d'utilisation, la messagerie sécurisée E-Santé permet de rester en contact
+                  avec votre médecin traitant ou votre praticien sans le déranger. Quand vous avez besoin de lui poser
+                  une question sur une prescription ou lui transmettre des résultats d'analyse, vous lui écrivez un
+                  petit message via votre messagerie en ligne et vous recevez sa réponse en toute simplicité et
+                  sécurité.</p>
+              </div>
+              <div class="col-3"></div>
             </div>
-            <div class="feature feau3">
-              <h3>LA TÉLÉCONSULTATION MÉDICALE</h3>
-              <p>Continuez à vous faire soigner tout en restant chez vous grâce à la téléconsultation médicale
-                proposée par E-Santé. Vous bénéficiez ainsi du même suivi qu'en cabinet sans avoir à vous déplacer.
-                Gagnez en confort et en sécurité car téléconsulter votre médecin en ligne limite les contacts et les
-                risques de contamination.</p>
+            <div class="row">
+              <div class="col-3"></div>
+              <div class="col-3"></div>
+              <div class="feature feau3 col-6">
+                <h3>LA TÉLÉCONSULTATION MÉDICALE</h3>
+                <p>Continuez à vous faire soigner tout en restant chez vous grâce à la téléconsultation médicale
+                  proposée par E-Santé. Vous bénéficiez ainsi du même suivi qu'en cabinet sans avoir à vous déplacer.
+                  Gagnez en confort et en sécurité car téléconsulter votre médecin en ligne limite les contacts et les
+                  risques de contamination.</p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="dropdown">
-          <h2>Question médicale</h2>
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="specialtyDropdown"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Spécialités
-          </button>
-          <div class="dropdown-menu" aria-labelledby="specialtyDropdown">
-            <!-- Utilisez *ngFor pour itérer sur vos spécialités et générer les options du menu -->
-            <a class="dropdown-item" href="#" ></a>
-          </div>
+      </div>
+      <div class="block dropdown">
+        <h2>Médecins disponnibles</h2>
+        <div>
+        <label class="my-1 mr-2" for="selectSpec">Spécialité</label>
+        <select class="custom-select my-1 mr-sm-2" #selectSpec  ng-change="getDoctorsBySpeciality(selectSpec.value)">
+          <option value="" selected>Choose...</option>
+          <option value="specialty.id" *ngFor="let specialty of specialties">{{ specialty.name }}</option>
+        </select>
+      </div>
+
+        <div class="row row-doctor">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+            <div class="carousel-item active">
+
+
+              <div class="card" style="width: 18rem;" *ngFor="let doct of doctors">
+                <img class="card-img-top" style="border-radius: 50%;" *ngIf="getPhotoUser(doct.id)!=''" src="{{getPhotoUser(doct.id)}}" alt="Card image cap">
+                <img class="card-img-top" style="border-radius: 50%;" *ngIf="getPhotoUser(doct.id)=='' && doct.sexe=='femme'" src="/src/assets/femme.png" alt="Card image cap">
+                <img class="card-img-top" style="border-radius: 50%;" *ngIf="getPhotoUser(doct.id)=='' && doct.sexe=='homme'" src="/src/assets/homme.png" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">DR. {{doct.firstname+" "+doct.lastname}}</h5>
+                  <p class="card-text" style="font-size: 20px;"></p>
+                  <a  routerLink="/doctor/{{doct.id}}" class="btn btn-primary">Détails</a>
+                </div>
+              </div>
+
+
+
+            </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
 
       </div>
+
+      </div>
+
+
+      <div class="block dropdown">
+        <h2>Question-Réponse</h2>
+        <div class="dropdown-menu" aria-labelledby="specialtyDropdown">
+        </div>
+          <div class="discussion">
+            <div class="qa-block" *ngFor="let question of questions" >
+                <div class="question">
+                    <h5 *ngIf="question.texte" >{{question.texte}}</h5>
+                    <span class="author" *ngIf="question.patient">{{question.patient.firstname+" "+question.patient.lastname}}</span>
+                    <span class="date"  *ngIf="question.date">{{question.date}}</span>
+                </div>
+                <div *ngIf="getResponseToQuestion(question.id)" >
+                  <div class="answer" *ngFor="let rep of reponses">
+                      <p *ngIf="rep.texte" >{{rep.texte}}</p>
+                      <span *ngIf="rep.medecin"  class="author">{{rep.medecin.firstname+" "+rep.medecin.lastname}}</span>
+                      <span *ngIf="rep.dateReponse" >{{rep.dateReponse}}</span>
+                  </div>
+              </div>
+            </div>
+
+        </div>
+
+
+      </div>
+
     </div>
   </div>
 </div>

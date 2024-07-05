@@ -32,4 +32,8 @@ export class UserService {
    getDoctors(): Observable<RegisterUser[]> {
     return this.http.get<RegisterUser[]>(this.baseUrl+"users/doctors");
    }
+
+   getDoctorSpeciality(id: string): Observable<Speciality> {
+     return this.http.get<Speciality>(this.baseUrl+"users/speciality/"+id,{ withCredentials: true});
+    }
 }

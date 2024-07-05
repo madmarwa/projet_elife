@@ -1,3 +1,4 @@
+import { RegisterUser } from "../register-user";
 import { User } from "../user";
 
 
@@ -6,9 +7,9 @@ export class Question {
   date: Date;
   urgent: boolean;
   texte: string;
-  patient: User;
+  patient: RegisterUser;
 
-  constructor(id: string, date: Date, urgent: boolean, texte: string, patient: User) {
+  constructor(id: string, date: Date, urgent: boolean, texte: string, patient: RegisterUser) {
     this.id = id;
     this.date = date;
     this.urgent = urgent;

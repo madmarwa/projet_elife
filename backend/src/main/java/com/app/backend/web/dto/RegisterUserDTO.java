@@ -14,6 +14,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record RegisterUserDTO(
+        String id,
         @NotBlank(message = "firstname is required") String firstname,
         @NotBlank(message = "lastname is required") String lastname,
         @NotBlank(message = "email is required") @Email(message = "email format is not valid") String email,
@@ -29,7 +30,8 @@ public record RegisterUserDTO(
     public static User fromRegisterUserDTO(RegisterUserDTO registerUserDTO, PasswordEncoder passwordEncoder) {
 
 
-        return User.builder()
+        return User.builder().build()
+                .id(registerUserDTO.firstname())
                 .firstname(registerUserDTO.firstname())
                 .lastname(registerUserDTO.lastname())
                 .email(registerUserDTO.email())
@@ -47,6 +49,7 @@ public record RegisterUserDTO(
     public static RegisterUserDTO toRegisterUserDTO(User user) {
         System.out.println(" ");System.out.println("dto.toUser");
         return new RegisterUserDTO(
+                user.getId(),
                 user.getFirstname(),
                 user.getLastname(),
                 user.getEmail(),

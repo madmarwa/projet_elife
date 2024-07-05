@@ -44,12 +44,14 @@ export class SignupComponent  implements OnInit, OnDestroy {
   // Initialize the registration form with validation
   initForm(): void {
     this.registerForm = this.formBuilder.group({
+      id:'',
       firstname: ['', Validators.required], // Firstname field with required validator
       lastname: ['', Validators.required], // Lastname field with required validator
       email: ['', [Validators.required, Validators.email]], // Email field with required and email validators
       password: ['', [Validators.required, Validators.minLength(6)]], // Password field with required and minlength validators
       confirmPassword: ['', Validators.required], // Confirm password field with required validator
       role: ['', Validators.required] // Role field with required validator
+
     }, {
       validators: [Validation.match('password', 'confirmPassword')] // Custom validator to match passwords
     });
@@ -59,15 +61,16 @@ export class SignupComponent  implements OnInit, OnDestroy {
   onSubmitSignup() {
     // Create a new user object from the form values
     const newUser: RegisterUser = {
+      id: "",
       firstname: this.registerForm.value.firstname,
       lastname: this.registerForm.value.lastname,
       email: this.registerForm.value.email,
       password: this.registerForm.value.password,
       role: this.registerForm.value.role,
-      sexe: '',
+      sexe: this.registerForm.value.sexe,
       birthDate: new Date(),
-      phone: '',
-      address: '',
+      phone: this.registerForm.value.phone,
+      address: this.registerForm.value.address,
       active: true,
       speciality: new Speciality("2","ok")
     };

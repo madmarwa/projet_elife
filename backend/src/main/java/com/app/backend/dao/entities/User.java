@@ -10,6 +10,7 @@ import com.app.backend.dao.enums.Role;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -83,4 +84,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return active;
     }
+
 }

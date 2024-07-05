@@ -1,4 +1,5 @@
 import { Question } from "../Question/question";
+import { RegisterUser } from "../register-user";
 import { User } from "../user";
 
 export class Reponse {
@@ -6,7 +7,7 @@ export class Reponse {
   dateReponse: Date;
   visible: boolean;
   texte: string;
-  medecin: User;
+  medecin: RegisterUser;
   question: Question;
 
   constructor(
@@ -14,7 +15,7 @@ export class Reponse {
     dateReponse: Date,
     visible: boolean,
     texte: string,
-    medecin: User,
+    medecin: RegisterUser,
     question: Question
   ) {
     this.id = id;

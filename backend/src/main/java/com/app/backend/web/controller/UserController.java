@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.app.backend.business.services.UserService;
+import com.app.backend.dao.entities.Speciality;
 import com.app.backend.dao.entities.User;
 
 import java.util.List;
@@ -36,6 +37,15 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable String id) {
         Optional<User> user = userRepository.findById(id);
         return user.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                   .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
+
+    }
+
+    @GetMapping("/speciality/{id}")
+    public ResponseEntity<Speciality> getSpecialityUser(@PathVariable String id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.map(value -> new ResponseEntity<>(value.getSpeciality(), HttpStatus.OK))
                    .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
 
 

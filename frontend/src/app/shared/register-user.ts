@@ -2,6 +2,7 @@ import { Speciality } from "./Speciality/speciality";
 
 export interface RegisterUser {
 
+  id:string;
   firstname: string;
   lastname: string;
   email: string;
@@ -11,7 +12,7 @@ export interface RegisterUser {
   phone: string;
   address: string;
   active:boolean ;
-  speciality: Speciality;
+  speciality?: Speciality;
 
   role: string;
 

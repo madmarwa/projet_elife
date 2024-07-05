@@ -37,6 +37,9 @@ export class HomeComponent  implements OnInit {
     }
 
   ngOnInit(): void {
+    this.getSpacialties();
+    this.getDoctors();
+    this.getQuestions();
   }
 
 
@@ -56,9 +59,12 @@ export class HomeComponent  implements OnInit {
         next: (doctors: RegisterUser[]) => { this.doctors = doctors; }
       })
   }
-  getDoctorsBySpeciality(speciality:Speciality){
+  getDoctorsBySpeciality(idSpeciality:string){
     this.getDoctors();
-    this.doctors.filter(doctor => doctor.speciality === speciality);
+    var sp=this.specialityService.getSpecialityById(idSpeciality).subscribe({
+      next: (spl: Speciality) => {
+        this.doctors.filter(doctor => doctor.speciality === spl); },
+    })
   }
 
   questions : Question[]=[]
@@ -70,25 +76,24 @@ export class HomeComponent  implements OnInit {
   }
 
   reponses:Reponse[]=[];
-  getResponseToQuestion(question:Question){
+  getResponseToQuestion(question:string){
     this.reponseService.getReponses().subscribe(
       {
         next: (reponses: Reponse[]) => { this.reponses = reponses; }
       })
 
-      this.reponses.filter(reponse => reponse.question=== question);
+      this.reponses.filter(reponse => reponse.question.id=== question);
   }
 
 
   image:any;
   getPhotoUser(idUser:string){
+    var img='';
     this.photoService.getByUser(idUser).subscribe(res => {
       if(res)
-        this.image='data:'+res.type+';base64,' + res.file;
-      else{
-            this.image='';
-        }
+        img='data:'+res.type+';base64,' + res.file;
     })
+    return img;
   }
   valueFile(){
     this.fileControl.valueChanges.subscribe((files: any) => {
@@ -133,4 +138,11 @@ export class HomeComponent  implements OnInit {
         .subscribe()
     }
 
+    doctSpeciality(idDoctor:string){
+      this.userService.getDoctorSpeciality(idDoctor).subscribe({
+        next: (res: Speciality) => { return res.name; }
+      })
+      return "";
+
+    }
 }
